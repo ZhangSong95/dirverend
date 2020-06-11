@@ -8,27 +8,27 @@
         </div>
         <div class="wrapLeftList">
           <ul>
-            <li class="clearfix">
+            <li class="clearfix" @click="status = 0">
               <img class="fl" src="../assets/img/house.png" alt="">
               <p class="fl">首页</p>
             </li>
-            <li class="clearfix">
+            <li class="clearfix" @click="status = 1">
               <img class="fl" src="../assets/img/house.png" alt="">
               <p class="fl">急诊出车记录</p>
             </li>
-            <li class="clearfix">
+            <li class="clearfix" @click="status = 2">
               <img class="fl" src="../assets/img/house.png" alt="">
               <p class="fl">版本更新</p>
             </li>
-            <li class="clearfix">
+            <li class="clearfix" @click="status = 3">
               <img class="fl" src="../assets/img/house.png" alt="">
               <p class="fl">意见反馈</p>
             </li>
-            <li class="clearfix">
+            <li class="clearfix" @click="status = 4">
               <img class="fl" src="../assets/img/house.png" alt="">
               <p class="fl">修改密码</p>
             </li>
-            <li class="clearfix">
+            <li class="clearfix" @click="status = 5">
               <img class="fl" src="../assets/img/house.png" alt="">
               <p class="fl">退出登录</p>
             </li>
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="wrapRight fl">
+    <div class="wrapRight fl" v-if="status === 0">
       <div class="padd54">
         <div class="wrapRightHead">
           <div class="clearfix">
@@ -59,12 +59,22 @@
         </div>
       </div>
     </div>
+    <div v-if="status === 1">1</div>
+    <div v-if="status === 2">2</div>
+    <div v-if="status === 3">3</div>
+    <div v-if="status === 4">4</div>
+    <div v-if="status === 5">5</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'mainPage'
+  name: 'mainPage',
+  data () {
+    return {
+      status: 0
+    }
+  }
 }
 </script>
 

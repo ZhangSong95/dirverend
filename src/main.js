@@ -3,6 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import { Form, Field, Button, Checkbox, CheckboxGroup } from 'vant'
+import './assets/less/styles.less'
+
+Vue.use(Form).use(Field).use(Button).use(Checkbox).use(CheckboxGroup)
 
 Vue.config.productionTip = false
 
