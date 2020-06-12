@@ -36,30 +36,72 @@
         </div>
       </div>
     </div>
+    <!--首页-->
     <div class="wrapRight fl" v-if="status === 0">
       <div class="padd54">
+        <!--头部-->
         <div class="wrapRightHead">
           <div class="clearfix">
             <p class="fl">任务中心</p>
             <p class="fr">刷新任务</p>
           </div>
         </div>
+        <!--列表-->
         <div class="wrapRightList">
           <ul>
             <li>
               <div class="clearfix">
-                <img class="fl" src="../assets/img/drees.png" alt="">
+                <img class="fl" src="../assets/img/drees.png" alt="" baialign="absmiddle">
                 <p class="fl">
-                  重庆市渝北区两路口健康路58号重庆市渝北区两路
-                  口健康路58号
+                  重庆市渝北区两路口健康路58号重庆市渝北区两路口健康路58号
                 </p>
+              </div>
+              <div class="wrapRightListDistanceTimes">
+                <div class="wrapRightLisDistance clearfix">
+                  <p class="fl">距离现场
+                    <span style="color: #E43434">6.5km</span>
+                  </p>
+                  <p class="fl">，预计时间
+                    <span style="color: #E43434">36min </span>
+                  </p>
+                </div>
+                <div class="wrapRightLisTimes">03-10 13:54</div>
+              </div>
+              <div class="wrapRightListButton">
+                <input type="button" value="拒绝">
+                <input type="button" value="接受">
+              </div>
+            </li>
+            <li>
+              <div class="clearfix">
+                <img class="fl" src="../assets/img/drees.png" alt="" baialign="absmiddle">
+                <p class="fl">
+                  重庆市渝北区两路口健康路58号重庆市渝北区两路口健康路58号
+                </p>
+              </div>
+              <div class="wrapRightListDistanceTimes">
+                <div class="wrapRightLisDistance clearfix">
+                  <p class="fl">距离现场
+                    <span style="color: #E43434">6.5km</span>
+                  </p>
+                  <p class="fl">，预计时间
+                    <span style="color: #E43434">36min </span>
+                  </p>
+                </div>
+                <div class="wrapRightLisTimes">03-10 13:54</div>
+              </div>
+              <div class="wrapRightListButton">
+                <input type="button" value="拒绝">
+                <input type="button" value="接受">
               </div>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    <div v-if="status === 1">1</div>
+    <div v-if="status === 1">
+
+    </div>
     <div v-if="status === 2">2</div>
     <div v-if="status === 3">3</div>
     <div v-if="status === 4">4</div>
@@ -97,6 +139,9 @@ export default {
     clear: both;
     overflow:hidden;
   }
+  /*html,body{ width: 100%; height: 100%; overflow: scroll;}*/
+  /*html::-webkit-scrollbar, body::-webkit-scrollbar{width:0px;height:0px;}*/
+  /*body{margin:0;}*/
   .wrap {
     width: 100%;
     .wrapLeft {
@@ -178,10 +223,56 @@ export default {
           width: 100%;
           height: 300px;
           ul li {
+            background: white;
             padding: 40px 22px 25px 28px;
+            margin-top: 24px;
           }
-          ul li div:nth-child(1) p {
-            font-size:32px;
+          ul li>div:nth-child(1) p {
+            width: 94%;
+           font-size: 32px;
+            height: 72px;
+            font-family:Microsoft YaHei;
+            font-weight:400;
+            color:rgba(51,51,51,1);
+            line-height:32px;
+            /*margin-top: -5px;*/
+            margin-left: 1.05rem;
+          }
+          .wrapRightListDistanceTimes {
+            height:25px;
+            line-height: 25px;
+            font-size:24px;
+            font-family:PingFang SC;
+            font-weight:500;
+            color:rgba(51,51,51,1);
+            margin-left: 46px;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            .wrapRightLisTimes {
+              height:20px;
+              font-size:26px;
+              font-family:DINOT;
+              font-weight:500;
+              color:rgba(153,153,153,1);
+            }
+          }
+          .wrapRightListButton {
+            margin-top: 38px;
+            display: flex;
+            justify-content: space-between;
+            input {
+              width: 48.22%;
+              height: 84px;
+              font-size:32px;
+              border-radius:8px;
+            }
+            input:nth-child(2) {
+              background:linear-gradient(0deg,rgba(255,137,137,1),rgba(255,120,121,1),rgba(255,87,87,1));
+              box-shadow:3px 3px 6px 0px rgba(253, 42, 42, 0.35);
+              border: none;
+              color: white;
+            }
           }
         }
       }
