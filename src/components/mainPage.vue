@@ -99,12 +99,110 @@
         </div>
       </div>
     </div>
-    <div v-if="status === 1">
-
+    <!--急诊出车记录-->
+    <div class="wrapRight fl" v-if="status === 1">
+      <div class="padd54">
+        <!--头部-->
+        <div class="wrapRightHead">
+          <div class="clearfix">
+            <p class="fl">急诊出车记录</p>
+            <p class="fr">说明</p>
+          </div>
+        </div>
+        <!--累计出车-->
+        <div class="cumulativeCar">
+          <div class="cumulativeCarLeft">
+            <p>今年累计出车</p>
+            <div>
+              <span>168</span>次
+            </div>
+          </div>
+          <div class="cumulativeCarRight">
+            <p>基本数据</p>
+            <div>
+              <div><div><span>12</span>次</div><p>有效出车</p></div>
+              <div><div><span>12</span>次</div><p>有效出车</p></div>
+              <div><div><span>12</span>次</div><p>有效出车</p></div>
+              <div><div><span>12</span>次</div><p>有效出车</p></div>
+            </div>
+          </div>
+        </div>
+        <!--出车记录汇总-->
+        <div>
+          <!--出车记录次数-->
+          <div></div>
+          <!--出车记录列表-->
+          <div></div>
+        </div>
+      </div>
     </div>
     <div v-if="status === 2">2</div>
-    <div v-if="status === 3">3</div>
-    <div v-if="status === 4">4</div>
+    <!--意见反馈-->
+    <div class="wrapRight fl" v-if="status === 3">
+      <div class="padd54">
+        <!--头部-->
+        <div class="wrapRightHead">
+          <div class="clearfix">
+            <p class="fl">意见反馈</p>
+          </div>
+        </div>
+        <!--问题和意见-->
+        <div class="questions">
+          <p>问题和意见</p>
+          <!--留言框-->
+            <van-field
+              rows="2"
+              size="28px"
+              autosize
+              type="textarea"
+              maxlength="300"
+              placeholder="请填写您的问题或意见，便于我们提供更高的服务。"
+              show-word-limit
+            />
+        </div>
+        <!--图片-->
+        <div class="imgs">
+          <div class="imgsTop">
+            <p>图片（非必填，提供问题截图）</p>
+            <div>0/4</div>
+          </div>
+          <div class="imgsbottm">
+            <van-uploader v-model="fileList" multiple />
+          </div>
+        </div >
+        <!--提交-->
+        <input type="button" value="提交" style="width: 100%;" class="submit">
+      </div>
+    </div>
+    <!--修改密码-->
+    <div class="wrapRight fl" v-if="status === 4">
+      <div class="padd54">
+        <!--头部-->
+        <div class="wrapRightHead">
+          <div class="clearfix">
+            <p class="fl">修改密码</p>
+          </div>
+        </div>
+        <!--密码-->
+        <div class="passwords">
+          <el-form class=“user-account-key” ref="form" :model="form" :rules="rules" label-width="100px">
+            <el-form-item prop=“password”>
+              <el-input type=“password” placeholder=若包含字母，请注意区分大小写 v-model="form.password"></el-input>
+            </el-form-item>
+            <el-form-item  prop=“newPassword”>
+              <el-input type=“password” placeholder=请设置6-16位密码 v-model="form.newPassword"></el-input>
+            </el-form-item>
+            <!--<el-form-item label=“确认密码” prop=“newPassword2”>-->
+              <!--<el-input type=“password” placeholder=“请确认新密码” v-model="form.newPassword2"></el-input>-->
+            <!--</el-form-item>-->
+            <el-form-item>
+              <el-button type=“primary” @click="onSubmit('form')">保存</el-button>
+              <!--<el-button @click="$refs['form'].resetFields()">重置</el-button>-->
+            </el-form-item>
+          </el-form>
+        </div>
+      </div>
+    </div>
     <div v-if="status === 5">5</div>
   </div>
 </template>
@@ -113,8 +211,44 @@
 export default {
   name: 'mainPage',
   data () {
+    // 此处即表单发送之前验证
+    let validateNewPassword = (rule, value, callback) => {
+      if (value === this.form.password) {
+        callback(new Error('新密码不能与原密码相同!'))
+      } else {
+        callback()
+      }
+    }
+    // let validateNewPassword2 = (rule, value, callback) => {
+    //   if (value !== this.form.newPassword) {
+    //     callback(new Error('与新密码不一致!'))
+    //   } else {
+    //     callback()
+    //   }
+    // }
     return {
-      status: 0
+      // 右侧栏
+      status: 0,
+      // 上传图片框架
+      fileList: [
+        { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
+        // Uploader 根据文件后缀来判断是否为图片文件
+        // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
+        { url: 'https://cloud-image', isImage: true }
+      ],
+      form: {},
+      rules: {
+        password: [
+          { required: true, message: '请输入原密码', trigger: 'blur' }],
+        newPassword: [
+          { required: true, message: '请设置新密码', trigger: 'blur' },
+          { validator: validateNewPassword, trigger: 'blur' }
+        ],
+        newPassword2: [
+          { required: true, message: '请确认新密码', trigger: 'blur' }
+          // { validator: validateNewPassword2, trigger: 'blur' }
+        ]
+      }
     }
   }
 }
@@ -185,8 +319,9 @@ export default {
               line-height: 5.75rem;
               font-size:1.75rem;
               font-family:Microsoft YaHei;
-              font-weight:bold;
+              /*font-weight:bold;*/
               color:rgba(51,51,51,1);
+              font-weight:400;
             }
           }
         }
@@ -219,9 +354,10 @@ export default {
           font-weight:400;
           color:rgba(153,153,153,1);
         }
+        /*首页*/
         .wrapRightList {
           width: 100%;
-          height: 300px;
+          /*height: 300px;*/
           ul li {
             background: white;
             padding: 40px 22px 25px 28px;
@@ -274,6 +410,120 @@ export default {
               color: white;
             }
           }
+        }
+        /*急诊出车记录*/
+        .cumulativeCar {
+          height: 190px;
+          display: flex;
+          justify-content: space-between;
+          .cumulativeCarLeft {
+            width: 30.41%;
+            background:rgba(255,255,255,1);
+            border-radius:16px;
+            &>p {
+              margin: 38px 66px 35px 30px;
+              height:25px;
+              line-height: 25px;
+              font-size:26px;
+              font-family:PingFang SC;
+              font-weight:500;
+              color:rgba(153,153,153,1);
+            }
+            &>div {
+              font-size: 22px;
+              span {
+                height:45px;
+                line-height: 45px;
+                font-size:58px;
+                font-family:DINOT;
+                font-weight:500;
+                color:rgba(51,51,51,1);
+                margin-left: 35px;
+              }
+            }
+          }
+          .cumulativeCarRight {
+            width: 63.5%;
+            background:rgba(255,255,255,1);
+            border-radius:8px;
+            padding: 30px 41px 38px 38px;
+            &>p {
+              height:25px;
+              line-height: 25px;
+              font-size:26px;
+              font-family:PingFang SC;
+              font-weight:500;
+              color:rgba(153,153,153,1);
+              margin-bottom: 36px;
+            }
+            &>div {
+              display: flex;
+              justify-content: space-between;
+            }
+          }
+        }
+        /*意见和反馈*/
+        .questions {
+          margin-top: 35px;
+          padding: 30px 30px 40px 30px;
+          background:rgba(255,255,255,1);
+          p {
+            height:25px;
+            line-height: 25px;
+            font-size:26px;
+            font-family:PingFang SC;
+            font-weight:500;
+            color:rgba(153,153,153,1);
+          }
+          div {
+            margin-top: 29px;
+            height:260px;
+            background:rgba(250,250,250,1);
+            border:1px solid rgba(232,232,232,1);
+            border-radius:6px;
+          }
+        }
+        .imgs {
+          margin-top: 35px;
+          padding: 37px 30px;
+          background:rgba(255,255,255,1);
+          .imgsTop {
+            display: flex;
+            justify-content: space-between;
+            p {
+              height:25px;
+              line-height: 25px;
+              font-size:26px;
+              font-family:PingFang SC;
+              font-weight:500;
+              color:rgba(153,153,153,1);
+            }
+            div {
+              height:25px;
+              font-size:26px;
+              font-family:PingFang SC;
+              font-weight:500;
+              color:rgba(199,199,199,1);
+            }
+          }
+          .imgsbottm {
+            margin-top: 30px;
+            margin-top: 30px;
+          }
+        }
+        .submit {
+          height:88px;
+          background:linear-gradient(-31deg,rgba(255,99,99,1),rgba(255,92,92,1));
+          box-shadow:3px 3px 6px 0px rgba(253, 42, 42, 0.35);
+          border-radius:8px;
+          margin-top: 50px;
+          border: none;
+          font-size: 31px;
+          color:rgba(255,255,255,1);
+        }
+        /*修改密码*/
+        .passwords {
+          margin-top: 50px;
         }
       }
     }
