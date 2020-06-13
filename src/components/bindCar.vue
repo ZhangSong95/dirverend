@@ -38,15 +38,15 @@ export default {
   },
   methods: {
     //   点击返回登录页面
-      onClickLeft() {
-          this.$router.push({path:'/login'})
-      }
+    onClickLeft () {
+      this.$router.push({path: '/login'})
+    }
   }
 }
 </script>
 <style lang='less' scoped>
 .wrap {
-    background:rgba(249,244,244,1);
+    background:rgba(255,255,255,1);
     width: 100vw;
     height: 100vh;
     position: relative;
@@ -76,7 +76,7 @@ export default {
             font-family:PingFang SC;
             font-weight:500;
             color:rgba(154,154,154,1);
-          } 
+          }
         //   选择车辆
         .choise {
             margin-top: 54px;
