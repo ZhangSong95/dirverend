@@ -3,12 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import { Form, Field, Button, Checkbox, CheckboxGroup, Uploader } from 'vant'
+import { Form, Field, Button, Checkbox, CheckboxGroup, Uploader, Dialog, NavBar  } from 'vant'
 import './assets/less/styles.less'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
-Vue.use(Form).use(Field).use(Button).use(Checkbox).use(CheckboxGroup).use(Uploader).use(ElementUI)
+Vue.use(Form).use(Field).use(Button).use(Checkbox).use(CheckboxGroup).use(Uploader).use(ElementUI).use(Dialog).use( NavBar )
 
 Vue.config.productionTip = false
 

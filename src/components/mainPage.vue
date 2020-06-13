@@ -185,10 +185,12 @@
         </div>
         <!--密码-->
         <div class="passwords">
-          <el-form class=“user-account-key” ref="form" :model="form" :rules="rules" label-width="100px">
+          <el-form class=“user-account-key” ref="form" :model="form" :rules="rules">
+            <div style="font-size:28px;color:rgba(153,153,153,1);height:27px;line-height:27px;margin-bottom:17px">旧密码</div>
             <el-form-item prop=“password”>
-              <el-input type=“password” placeholder=若包含字母，请注意区分大小写 v-model="form.password"></el-input>
+              <el-input type=“password” placeholder=若包含字母，请注意区分大小写 v-model="form.password" size='28px'></el-input>
             </el-form-item>
+            <div style="font-size:28px;color:rgba(153,153,153,1);height:27px;line-height:27px;margin-bottom:17px">新密码</div>
             <el-form-item  prop=“newPassword”>
               <el-input type=“password” placeholder=请设置6-16位密码 v-model="form.newPassword"></el-input>
             </el-form-item>
@@ -196,7 +198,7 @@
               <!--<el-input type=“password” placeholder=“请确认新密码” v-model="form.newPassword2"></el-input>-->
             <!--</el-form-item>-->
             <el-form-item>
-              <el-button type=“primary” @click="onSubmit('form')">保存</el-button>
+              <el-button type=“primary” @click="onSubmit" class="submits">提交</el-button>
               <!--<el-button @click="$refs['form'].resetFields()">重置</el-button>-->
             </el-form-item>
           </el-form>
@@ -231,10 +233,8 @@ export default {
       status: 0,
       // 上传图片框架
       fileList: [
-        { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
         // Uploader 根据文件后缀来判断是否为图片文件
         // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
-        { url: 'https://cloud-image', isImage: true }
       ],
       form: {},
       rules: {
@@ -249,6 +249,16 @@ export default {
           // { validator: validateNewPassword2, trigger: 'blur' }
         ]
       }
+    }
+  },
+  methods: {
+    onSubmit () {
+      this.$dialog.alert({
+        message: '密码已成功修改请重新登录',
+        confirmButtonText: '重新登录'
+      }).then(() => {
+        this.$router.push({ path: '/login' })
+      })
     }
   }
 }
@@ -524,6 +534,19 @@ export default {
         /*修改密码*/
         .passwords {
           margin-top: 50px;
+        }
+        .submits {
+          width: 100%;
+          height: 98px;
+          line-height: 98px;
+          padding: 0!important;
+          font-size:32px;
+          font-family:PingFang SC;
+          color:rgba(255,255,255,1);
+          background:linear-gradient(0deg,rgba(255,137,137,1),rgba(255,120,121,1),rgba(255,87,87,1));
+          box-shadow:3px 3px 6px 0px rgba(253, 42, 42, 0.35);
+          border-radius:8px;
+          border: none;
         }
       }
     }
