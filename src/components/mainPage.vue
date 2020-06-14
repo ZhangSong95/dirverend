@@ -266,7 +266,7 @@ export default {
 
 <style scoped lang="less">
   html {
-    /*font-size: 16px;*/
+    font-size: 16px;
   }
   .fl {
     float: left;
@@ -375,7 +375,7 @@ export default {
           }
           ul li>div:nth-child(1) p {
             width: 94%;
-           font-size: 32px;
+            font-size: 2rem;
             height: 72px;
             font-family:Microsoft YaHei;
             font-weight:400;
