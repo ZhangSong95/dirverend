@@ -7,8 +7,10 @@ import { Form, Field, Button, Checkbox, CheckboxGroup, Uploader, Dialog, NavBar 
 import './assets/less/styles.less'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import Meta from 'vue-meta'
 
-Vue.use(Form).use(Field).use(Button).use(Checkbox).use(CheckboxGroup).use(Uploader).use(ElementUI).use(Dialog).use(NavBar)
+Vue.use(Form).use(Field).use(Button).use(Checkbox).use(CheckboxGroup)
+Vue.use(Uploader).use(ElementUI).use(Dialog).use(NavBar).use(Meta)
 
 Vue.config.productionTip = false
 
