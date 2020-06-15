@@ -41,7 +41,7 @@
       </div>
     </div>
     <!--首页-->
-    <div class="wrapRight fl" v-if="status === 0">
+    <div class="wrapRight fl" v-show="status === 0">
       <div class="padd54">
         <!--头部-->
         <div class="wrapRightHead">
@@ -169,7 +169,7 @@
       </div>
     </div>
     <!--急诊出车记录-->
-    <div class="wrapRight fl" v-if="status === 1">
+    <div class="wrapRight fl" v-show="status === 1">
       <div class="padd54">
         <!--头部-->
         <div class="wrapRightHead">
@@ -224,9 +224,10 @@
         </div>
       </div>
     </div>
-    <div v-if="status === 2">2</div>
+    <!--版本更新-->
+    <div class="wrapRight fl" v-show="status === 2">2</div>
     <!--意见反馈-->
-    <div class="wrapRight fl" v-if="status === 3">
+    <div class="wrapRight fl" v-show="status === 3">
       <div class="padd54">
         <!--头部-->
         <div class="wrapRightHead">
@@ -264,7 +265,7 @@
       </div>
     </div>
     <!--修改密码-->
-    <div class="wrapRight fl" v-if="status === 4">
+    <div class="wrapRight fl" v-show="status === 4">
       <div class="padd54">
         <!--头部-->
         <div class="wrapRightHead">
@@ -362,14 +363,15 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
-  html {
-    font-size: 16px;
-  }
-  @media only screen and (min-width:799px) and (max-width:800px){
-  html {
-      font-size: 12px;
-    }
+<style  lang="less">
+
+  @media screen and (max-width:800px){
+    html {
+        font-size: 12px !important;
+        .wrapRight {
+          height: 100vh;
+        }
+      }
   }
   @media only screen and (min-width:1279px) and (max-width:1280px) {
     html {
@@ -396,6 +398,7 @@ export default {
   /*body{margin:0;}*/
   .wrap {
     width: 100%;
+    background: #f5f5f5;
     .wrapLeft {
       width: 29.53%;
       .padd40 {
@@ -452,7 +455,7 @@ export default {
     }
     .wrapRight {
       background: #f5f5f5;
-      height: 100vh;
+      /*height: 100vh;*/
       .padd54 {
         padding: 3.375rem 2.5rem 0 2.5rem;
         .wrapRightHead {

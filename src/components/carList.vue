@@ -8,7 +8,19 @@
     />
   </div>
   <div class="search">
-    <input type="text" placeholder="请输入车牌号">
+    <van-field v-model="value" @input="submit()"  placeholder="请输入车牌号" />
+   <!-- <van-cell-group>
+      <van-field
+        v-model="phone"
+        @input="submit()"
+        required
+        label="手机号"
+        placeholder="请输入手机号"
+        :error-message="errText"
+      />
+    </van-cell-group>-->
+
+   <!-- <input type="text" placeholder="请输入车牌号">-->
   </div>
   <!--列表-->
   <div class="list">
@@ -56,11 +68,22 @@ export default {
   data () {
     // 这里存放数据
     return {
+      value: '',
+      errText: 'qqqqqq',
+      phone: ''
     }
   },
   methods: {
     onClickLeft () {
       this.$router.push({path: '/bindCar'})
+    },
+    submit () {
+      console.log('输入车牌')
+      // /*axios.post().then(res=>{
+      //  if (res.data.code == 0) {}else {
+      //    this.errText = res.data.message
+      //  }
+      // })*/
     }
   }
 }
