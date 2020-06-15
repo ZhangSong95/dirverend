@@ -30,4 +30,19 @@ export default {
   a {
     text-decoration: none;
   }
+.clearfix:after {
+  content: ".";
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+  overflow:hidden;
+}
+  .fl {
+    float: left;
+  }
+  .fr {
+    float: right;
+  }
 </style>

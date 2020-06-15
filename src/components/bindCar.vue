@@ -45,6 +45,19 @@ export default {
 }
 </script>
 <style lang='less' scoped>
+  html {
+    font-size: 16px;
+  }
+  @media only screen and (min-width:799px) and (max-width:800px){
+    .content{
+      width: 72.5%;
+    }
+  }
+  @media only screen and (min-width:1279px) and (max-width:1280px){
+    .content{
+      width: 45.31%;
+    }
+  }
 .wrap {
     background:rgba(255,255,255,1);
     width: 100vw;
@@ -52,7 +65,6 @@ export default {
     position: relative;
         // 内容
         .content {
-        width: 45.31%;
         margin: 0 auto;
         text-align: center;
         position: absolute;
@@ -61,45 +73,40 @@ export default {
         transform:translate(-50%,-50%);
         // 标题
         .header p:nth-child(1) {
-            height: 39px;
-            line-height: 39px;
-            font-size: 40px;
+          font-size: 2.5rem;
             font-family:Microsoft YaHei;
             font-weight:bold;
             color:rgba(52,52,52,1);
            }
         .header p:nth-child(2) {
-            margin-top: 24px;
-            height: 33px;
-            line-height: 33px;
-            font-size: 34px;
+            margin-top: 1.5rem;
+            font-size: 2.125rem;
             font-family:PingFang SC;
             font-weight:500;
             color:rgba(154,154,154,1);
           }
         //   选择车辆
         .choise {
-            margin-top: 54px;
+            margin-top: 3.375rem;
             input {
                 width: 100%;
-                height: 88px;
                 background:rgba(255,255,255,1);
                 border:1px solid rgba(206,206,206,1);
-                border-radius:8px;
+                border-radius:0.5rem;
             }
             .choiseOne {
-                padding: 30px 34px 30px 30px;
+                padding: 1.875rem 2.125rem 1.875rem 1.875rem;
                 box-sizing: border-box;
-                font-size:28px;
+                font-size: 1.75rem;
                 font-family:PingFang SC;
                 font-weight:500;
                 color:rgba(198,202,203,1);
             }
             .choiseTwo {
-                margin-top: 36px;
-                padding: 30px;
+                margin-top: 2.25rem;
+                padding: 1.875rem;
                 box-sizing: border-box;
-                font-size:28px;
+                font-size: 1.75rem;
                 font-family:PingFang SC;
                 font-weight:500;
                 color:rgba(52,52,52,1);
@@ -108,28 +115,28 @@ export default {
         }
         // 提交绑定
         .buttons {
-            margin-top: 60px;
+            margin-top: 3.75rem;
             display: flex;
             justify-content: space-between;
             .buttonsLeft {
                 width: 46%;
-                height: 88px;
                 border:1px solid rgba(255,100,100,1);
-                border-radius:8px;
+                border-radius: 0.5rem;
                 border: none;
-                font-size:32px;
+                font-size:2rem;
                 color:rgba(228,52,52,1);
+              padding: 1.75rem 0;
             }
             .buttonsRight {
                 width: 46%;
-                height: 88px;
                 background:linear-gradient(0deg,rgba(255,137,137,1),rgba(255,120,121,1),rgba(255,87,87,1));
                 box-shadow:3px 3px 6px 0px rgba(253, 42, 42, 0.35);
-                border-radius:8px;
+                border-radius: 0.5rem;
                 border: none;
-                font-size:32px;
+                font-size: 2rem;
                 font-family:PingFang SC;
                 color:rgba(255,255,255,1);
+              padding: 1.75rem 0;
             }
         }
     }

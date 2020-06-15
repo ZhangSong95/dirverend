@@ -56,6 +56,16 @@ export default {
   html {
     font-size: 16px;
   };
+  @media only screen and (min-width:799px) and (max-width:800px){
+    .content{
+      width: 72.25%;
+    }
+  }
+  @media only screen and (min-width:1279px) and (max-width:1280px){
+    .content{
+      width: 44.53%;
+    }
+  }
   .wrap {
     background:rgba(249,244,244,1);
     width: 100vw;
