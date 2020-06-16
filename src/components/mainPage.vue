@@ -12,10 +12,6 @@
               <img class="fl" src="../assets/img/house.png" alt="">
               <p class="fl">首页</p>
             </li>
-            <li class="clearfix">
-              <img class="fl" src="../assets/img/house.png" alt="">
-              <p class="fl">车辆信息</p>
-            </li>
             <li class="clearfix" @click="status = 1">
               <img class="fl" src="../assets/img/house.png" alt="">
               <p class="fl">急诊出车记录</p>
@@ -35,6 +31,10 @@
             <li class="clearfix"  @click="singOut" >
               <img class="fl" src="../assets/img/house.png" alt="">
               <p class="fl">退出登录</p>
+            </li>
+            <li class="clearfix" @click="status = 6">
+              <img class="fl" src="../assets/img/house.png" alt="">
+              <p class="fl">车辆信息</p>
             </li>
           </ul>
         </div>
@@ -295,6 +295,59 @@
         </div>
       </div>
     </div>
+    <!--车辆信息-->
+    <div class="wrapRight fl" v-show="status === 6">
+      <div class="padd54">
+        <!--头部-->
+        <div class="wrapRightHead">
+          <div class="clearfix">
+            <p class="fl">车辆信息</p>
+            <div class="fr clearfix">
+              <img src="../assets/img/revise.png" alt="" class="fl">
+              <p class="fr" @click="eject">说明</p>
+            </div>
+          </div>
+        </div>
+        <!--信息-->
+        <div class="messages">
+          <!--车辆信息-->
+          <div class="carMessage">
+            <div>
+              <p class="aa">车  牌  号：</p>
+              <p>渝A888888</p>
+            </div>
+            <div>
+              <p class="aa">行 驶 证 号：</p>
+              <p>145651795445555</p>
+            </div>
+            <div>
+              <p class="aa">车辆管理员：</p>
+              <p>老司机 13036310095</p>
+            </div>
+          </div>
+          <div class="dashed"></div>
+          <!--司机信息-->
+          <div class="driverMessage">
+            <div>
+              <p class="aa">姓名：</p>
+              <p>老司机</p>
+            </div>
+            <div>
+              <p class="aa">联系电话：</p>
+              <p>12345678978</p>
+            </div>
+            <div>
+              <p class="aa">工号：</p>
+              <p>25455</p>
+            </div>
+            <div style="margin-bottom: 0">
+              <p class="aa">驾驶证：</p>
+              <p>25415454454545441545455</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -371,6 +424,12 @@ export default {
         .wrapRight {
           height: 100vh;
         }
+        .carMessage div p:nth-child(1) {
+          width: 30% !important;
+        }
+        .driverMessage div p:nth-child(1) {
+          width: 20% !important;
+        }
       }
   }
   @media only screen and (min-width:1279px) and (max-width:1280px) {
@@ -401,6 +460,7 @@ export default {
     background: #f5f5f5;
     .wrapLeft {
       width: 29.53%;
+      background: #fff;
       .padd40 {
         padding-left: 2.5rem;
         .wrapLeftHead {
@@ -715,6 +775,61 @@ export default {
           box-shadow:3px 3px 6px 0px rgba(253, 42, 42, 0.35);
           border-radius:8px;
           border: none;
+        }
+        /*车辆信息*/
+        .messages {
+          background: rgba(255, 255, 255, 1);
+          border-radius: 1rem;
+          padding: 2rem 1.875rem 4rem 2.5rem;
+          .carMessage div {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 1.875rem;
+            p:nth-child(1) {
+              text-align-last: justify;
+              -moz-text-align-last: justify; //兼容firefox
+              text-align: justify;
+              text-justify: distribute-all-lines; //兼容ie
+              display: block; //ie下需设为block
+              width: 24%;
+              font-size: 1.875rem;
+              color: #333;
+            }
+            p:nth-child(2) {
+              font-size: 1.875rem;
+              font-family: PingFang SC;
+              font-weight: bold;
+              color: rgba(51, 51, 51, 1);
+            }
+          }
+          .dashed {
+             border-bottom:1px dashed rgba(226,226,226,1);
+            margin-top: 1.06rem;
+            margin-bottom: 2.875rem;
+          }
+          .driverMessage div {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 1.875rem;
+            p:nth-child(1) {
+              text-align-last: justify;
+              -moz-text-align-last: justify; //兼容firefox
+              text-align: justify;
+              text-justify: distribute-all-lines; //兼容ie
+              display: block; //ie下需设为block
+              width: 16%;
+              font-size: 1.5rem;
+              font-family:PingFang SC;
+              font-weight:500;
+              color:rgba(119,119,119,1);
+            }
+            p:nth-child(2) {
+              font-size: 1.5rem;
+              font-family:PingFang SC;
+              font-weight:500;
+              color:rgba(119,119,119,1);
+            }
+          }
         }
       }
     }
