@@ -39,21 +39,21 @@
           <ul>
             <li>渝A6687367</li>
             <li>老司机</li>
-            <li><a href="">点击选择</a></li>
+            <li @click="confirm">点击选择</li>
           </ul>
         </li>
         <li style="margin-bottom: 4.25rem">
           <ul>
             <li>渝A6687367</li>
             <li>老司机</li>
-            <li><a href="">点击选择</a></li>
+            <li>点击选择</li>
           </ul>
         </li>
         <li style="margin-bottom: 4.25rem">
           <ul>
             <li>渝A6687367</li>
             <li>老司机</li>
-            <li><a href="">点击选择</a></li>
+            <li>点击选择</li>
           </ul>
         </li>
       </ul>
@@ -75,6 +75,9 @@ export default {
   },
   methods: {
     onClickLeft () {
+      this.$router.push({path: '/bindCar'})
+    },
+    confirm () {
       this.$router.push({path: '/bindCar'})
     },
     submit () {

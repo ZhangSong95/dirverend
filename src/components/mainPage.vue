@@ -304,7 +304,7 @@
             <p class="fl">车辆信息</p>
             <div class="fr clearfix">
               <img src="../assets/img/revise.png" alt="" class="fl">
-              <p class="fr" @click="eject">说明</p>
+              <p class="fr" @click="revise">修改</p>
             </div>
           </div>
         </div>
@@ -411,6 +411,9 @@ export default {
     },
     singOut () {
       this.$router.push({ path: '/login' })
+    },
+    revise () {
+      this.$router.push({ path: '/carList' })
     }
   }
 }

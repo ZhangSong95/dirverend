@@ -35,6 +35,29 @@
 <script>
 // import Button from 'vant/lib/button'
 // import 'vant/lib/button/style'
+import { Base64 } from 'js-base64'
+import JSEncrypt from 'jsencrypt'
+import md5 from 'js-md5'
+import axios from 'axios'
+var public_key = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDEiO4J7T2bs+wZtU9pKUU7qXE4' +
+  'oUPgy8Fo80yF/h6v9pA049draRDic0UrsZ/rH51vjmGrFqH/qlVwiFqM7FKska+H' +
+  'pZcltiHJT8JrCO1Hgp00jbfeCBgHosPjEjgsDGHMY74yLe70eGelEouqwOZoVwe0' +
+  'ff2rHYbOJe9sz6hw0QIDAQAB'
+
+var private_key = 'MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAMw171hTC609b3I6' +
+  'A9Aw7Q/YqzWHDEn3olgX7VFZdjVUWhV5Eo+3jRKVEFox3pgOmtthfAtRae/2dYWg' +
+  'uzp19QUNO+F3pWlwsmBmHT8G2v3PzjBND7de2oa1ASmohUIS81jheB5S0xJpwUhy' +
+  'YFInLe6YdbOvfzaKm+aREH4JN+WtAgMBAAECgYBUhgZ5MnZk0EbuqqClbXrR0kab' +
+  'Mzic7QifGdg6kaLh0/YtaR2LqteTV2ubSYTuvyzNnP3w2VPV5Ncj5jFYszYkkYxp' +
+  'TKJ5JhjGlkgetw4AKPwNbrgSATsfDF9dwyl+IZExnan5i22M2UiDrJLQbLW0TpO/' +
+  'hOBsgPMiuQJiWy8RKQJBAPI51mmXUKAQlcHoPrHLLCTfEPMKp/Q8BvsEJmTFd1Dm' +
+  'drpe3DuuXYCiglHbZUHgIHCDXyHvQMfIxBS69VGJvycCQQDX0rJtbpZdg8r9da0V' +
+  'PTOeeYJX1cDAqLn6qyuFEDSnq2vWPhcssCup240r1u1kFdTpHJJEl7RdkH2X5l3z' +
+  'ezkLAkEA4XBJCP9Gj6K/7re7WfgRPsPJX5okVOBlUsw6+4D5GndUOwK8kGMpLOaS' +
+  'yaKa7COvrWfna4rkTMyjCfQzC89a8wJBAJrUpPys4WKlMfMzgMBD78w5D7FDv8x3' +
+  'PzT9p3MGdT/0UqCYWrfMiwaIY3aX8iZjIyM5RBXBX7vf9LoMokoSlJECQQDj10b0' +
+  'QsMXkvketVtwNv4yoN94lOWIa/xy5oGK4UMxs/iImCxK9W3eD2FVtlIVqwHMH8q6' +
+  'DIgfGFubwidGxqE7'
 export default {
   name: 'login',
   data () {
@@ -46,7 +69,30 @@ export default {
   },
   methods: {
     onSubmit (values) {
-      console.log('submit', values)
+      // console.log('submit', values)
+      let encryptStr = new JSEncrypt()
+      encryptStr.setPublicKey(public_key)
+
+      // axios({
+      //   method: 'post',
+      //   url: 'https://g.i.jshi9.com/v1.0.2/auth/ambulance/login',
+      //   data: 'mob=' + this.username + '&password=' + Base64.encode(encryptStr.encrypt(md5(this.password).toUpperCase())),
+      //   headers: {
+      //     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      //   },
+      //   timeout: 10000
+      // })
+
+      this.$axios('v1.0.5/auth/login/driver', {
+        account: this.username,
+        password: Base64.encode(encryptStr.encrypt(md5(this.password).toUpperCase()))
+      })
+        .then(res => {
+          if (res.data.code === 1) {
+            console.log('1111111')
+            // console.log(res.msg)
+          }
+        })
     }
   }
 }
