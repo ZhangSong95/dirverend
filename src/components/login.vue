@@ -89,6 +89,10 @@ export default {
       })
         .then(res => {
           if (res.data.code === 1) {
+            window.localStorage.setItem('token', res.data.token)
+            setTimeout(() => {
+              this.$router.push({path: ''})
+            }, 500)
             console.log('1111111')
             // console.log(res.msg)
           }
