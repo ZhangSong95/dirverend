@@ -83,8 +83,8 @@ export default {
       //   timeout: 10000
       // })
 
-      this.$axios('v1.0.5/auth/login/driver', {
-        account: this.username,
+      this.$axios('v1.0.5/auth/ambulance/login', {
+        mob: this.username,
         password: Base64.encode(encryptStr.encrypt(md5(this.password).toUpperCase()))
       })
         .then(res => {
