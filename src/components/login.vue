@@ -35,14 +35,13 @@
 <script>
 // import Button from 'vant/lib/button'
 // import 'vant/lib/button/style'
-import { Base64 } from 'js-base64'
-import JSEncrypt from 'jsencrypt'
+// import { Base64 } from 'js-base64'
+import JsEncrypt from 'jsencrypt'
 import md5 from 'js-md5'
-import axios from 'axios'
-var public_key = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDEiO4J7T2bs+wZtU9pKUU7qXE4' +
-  'oUPgy8Fo80yF/h6v9pA049draRDic0UrsZ/rH51vjmGrFqH/qlVwiFqM7FKska+H' +
-  'pZcltiHJT8JrCO1Hgp00jbfeCBgHosPjEjgsDGHMY74yLe70eGelEouqwOZoVwe0' +
-  'ff2rHYbOJe9sz6hw0QIDAQAB'
+// import axios from 'axios'
+var public_key = '-----BEGIN PUBLIC KEY-----'+
+'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDEiO4J7T2bs+wZtU9pKUU7qXE4oUPgy8Fo80yF/h6v9pA049draRDic0UrsZ/rH51vjmGrFqH/qlVwiFqM7FKska+HpZcltiHJT8JrCO1Hgp00jbfeCBgHosPjEjgsDGHMY74yLe70eGelEouqwOZoVwe0ff2rHYbOJe9sz6hw0QIDAQAB' +
+  '-----END PUBLIC KEY-----'
 
 var private_key = 'MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAMw171hTC609b3I6' +
   'A9Aw7Q/YqzWHDEn3olgX7VFZdjVUWhV5Eo+3jRKVEFox3pgOmtthfAtRae/2dYWg' +
@@ -70,7 +69,7 @@ export default {
   methods: {
     onSubmit (values) {
       // console.log('submit', values)
-      let encryptStr = new JSEncrypt()
+      let encryptStr = new JsEncrypt()
       encryptStr.setPublicKey(public_key)
 
       // axios({
@@ -83,15 +82,18 @@ export default {
       //   timeout: 10000
       // })
 
-      this.$axios('v1.0.5/auth/ambulance/login', {
-        mob: this.username,
-        password: Base64.encode(encryptStr.encrypt(md5(this.password).toUpperCase()))
+      this.$axios('v1.0.5/auth/login/driver', {
+        account: this.username,
+        // password: encryptStr.encrypt(md5(this.password).toUpperCase().toUpperCase())
+        password: "nEkkCH0adiyBo66PJ1Hw2MafEcxr41elU7/kX37mNu+BMof0XCT3xCGJxNXYub3nEz5Ww9r1RmpumYcYxoXFNwoBL0rFer/AC/jYh76ki+alVhxHuotWEzMgJmLWkX0ofCJFbGQGzsEKACpKqPZ+H/eDN+UluKf5U6RFuVPJ6nY="
       })
         .then(res => {
           if (res.data.code === 1) {
-            window.localStorage.setItem('token', res.data.token)
+            // let test1 = res.data.data.token
+            // console.log(test1)
+            window.localStorage.setItem('token', res.data.data.token)
             setTimeout(() => {
-              this.$router.push({path: ''})
+              this.$router.push({path: '/bindCar'})
             }, 500)
             console.log('1111111')
             // console.log(res.msg)
